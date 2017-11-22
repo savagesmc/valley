@@ -26,6 +26,11 @@ def index():
     return render_template('index.html',
                            current_time=datetime.utcnow())
 
+@app.route('/valley')
+def valley():
+    print("rendering template valley.html")
+    return render_template('valley.html')
+
 
 @app.route('/user/<name>')
 def user(name):
