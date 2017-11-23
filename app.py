@@ -2,6 +2,7 @@ from datetime import datetime
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
+from valley import valley as V
 
 from flask_script import Manager
 app = Flask(__name__)
@@ -29,7 +30,14 @@ def index():
 @app.route('/valley')
 def valley():
     print("rendering template valley.html")
-    return render_template('valley.html')
+    songs = V.getSongs("contest")
+    return render_template('valley.html', songs=songs)
+
+@app.route('/valley/<song>')
+def valleySong(song):
+    print("rendering template song.html")
+    pages = V.getPages(song)
+    return render_template('song.html', pages=pages)
 
 
 @app.route('/user/<name>')
