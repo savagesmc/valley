@@ -41,8 +41,12 @@ def valleySong(song):
     print("rendering template song.html")
     path = os.path.abspath("static/contest/{}".format(song))
     pages = ["contest/{}/{}".format(song, x) for x in V.getPages(path)]
-    mp3s = ["contest/{}/{}".format(song, x) for x in V.getMp3Files(path)]
-    return render_template('song.html', pages=pages, mp3s=mp3s)
+    mp3s = V.getMp3Files(path)
+    mp3urls = ["contest/{}/{}".format(song, x) for x in mp3s]
+    print pages
+    print mp3s
+    print mp3urls
+    return render_template('song.html', pages=pages, mp3s=mp3s, mp3urls=mp3urls)
 
 
 @app.route('/user/<name>')

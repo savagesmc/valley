@@ -14,10 +14,12 @@ def getFilenames(files, filt):
 
 def getPages(path):
    f = os.listdir(path)
-   print("getPages: {} : {}".format(path, f))
-   return getFilenames(f, 'jpg')
+   result = getFilenames(f, 'jpg')
+   print("getPages: {} : {}".format(path, f, result))
+   return result
 
 def getMp3Files(path):
    f = os.listdir(path)
-   print("getMp3Files: {} : {}".format(path, f))
-   return getFilenames(f, 'mp3')
+   result = getFilenames(f, 'mp3')
+   print("getMp3Files: {} : {} : {}".format(path, f, result))
+   return result
