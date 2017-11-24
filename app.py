@@ -30,7 +30,6 @@ def index():
 
 @app.route('/valley')
 def valley():
-    print("rendering template valley.html")
     path = os.path.abspath("static/contest")
     songs = V.getSongs(path)
     return render_template('valley.html', songs=songs)
@@ -38,14 +37,10 @@ def valley():
 
 @app.route('/valley/<song>')
 def valleySong(song):
-    print("rendering template song.html")
     path = os.path.abspath("static/contest/{}".format(song))
     pages = ["contest/{}/{}".format(song, x) for x in V.getPages(path)]
     mp3s = V.getMp3Files(path)
     mp3urls = ["contest/{}/{}".format(song, x) for x in mp3s]
-    print pages
-    print mp3s
-    print mp3urls
     return render_template('song.html', pages=pages, mp3s=mp3s, mp3urls=mp3urls)
 
 
