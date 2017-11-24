@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+   <div>
+      <h3>All Audio Parts - Watch Video</h3>
+      <video controls>
+         <source src="{{ url_for('static', filename=video) }}" type="video/mp4">
+      </ul>
+   </div>
+{% endblock %}

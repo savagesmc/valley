@@ -41,6 +41,11 @@ def valleySong(song):
     pages = ["contest/{}/{}".format(song, x) for x in V.getPages(path)]
     mp3s = V.getMp3Files(path)
     mp3urls = ["contest/{}/{}".format(song, x) for x in mp3s]
+    if not mp3s:
+       mp4s = V.getMp4Files(path)
+       mp4urls = ["contest/{}/{}".format(song, x) for x in mp4s]
+       # Only render first video in list (assumes 1 video per song/folder)
+       return render_template('video.html', video=mp4urls[0])
     return render_template('song.html', pages=pages, mp3s=mp3s, mp3urls=mp3urls)
 
 
