@@ -1,3 +1,4 @@
+import os
 from datetime import datetime
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
@@ -30,14 +31,18 @@ def index():
 @app.route('/valley')
 def valley():
     print("rendering template valley.html")
-    songs = V.getSongs("contest")
+    path = os.path.abspath("static/contest")
+    songs = V.getSongs(path)
     return render_template('valley.html', songs=songs)
+
 
 @app.route('/valley/<song>')
 def valleySong(song):
     print("rendering template song.html")
-    pages = V.getPages(song)
-    return render_template('song.html', pages=pages)
+    path = os.path.abspath("static/contest/{}".format(song))
+    pages = ["contest/{}/{}".format(song, x) for x in V.getPages(path)]
+    mp3s = ["contest/{}/{}".format(song, x) for x in V.getMp3Files(path)]
+    return render_template('song.html', pages=pages, mp3s=mp3s)
 
 
 @app.route('/user/<name>')
