@@ -1,0 +1,10 @@
+#!/bin/bash
+
+src=~/home/repos/valley/
+dst=smclark@clarkhome.org:~/clarkhome.org/
+SSHPASS=`cat ~/.cred/.rsync.clarkhome.org.cred`
+
+rsync --exclude=.git --exclude=venv --exclude=scripts -cavz \
+      --rsh="/usr/bin/sshpass -p $SSHPASS ssh -o StrictHostKeyChecking=no" \
+      $src $dst
+      # \--password-file=~/.cred/.rsync.clarkhome.org.cred \

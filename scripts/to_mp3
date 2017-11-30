@@ -1,0 +1,13 @@
+#!/bin/bash
+
+for file in *.mp4
+do
+  full=$(basename $file)
+  fname=${full%.*}
+  result=`ffmpeg -i $file -vn -ar 44100 -ac 2 -ab 256k -f mp3 $fname.mp3`
+  if [[ $result ]]; then
+    echo $file failed to convert to mp3
+	 exit 1
+  fi
+  rm $file
+done
