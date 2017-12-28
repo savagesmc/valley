@@ -8,11 +8,16 @@
     <h1>Valley Contest Practice Songlist</h1>
 </div>
 
-<div class="song_list">
-   {% for song in songs %}
-   <div class="songlist">
-      <a href = {{ url_for('valleySong', song=song) }}> {{ song }} </a>
-   </div>
+<div class="group_list">
+   {% for group, songs in groups.iteritems() %}
+      <div class="group">
+         <h3>{{ group }} </h3>
+         {% for song in songs %}
+            <div class="song">
+               <a href = {{ url_for('valleySong', song=song) }}> {{ song }} </a>
+            </div>
+         {% endfor %}
+      </div>
    {% endfor %}
 </div>
 

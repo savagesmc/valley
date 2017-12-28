@@ -31,8 +31,8 @@ def index():
 @app.route('/valley')
 def valley():
     path = os.path.abspath("static/contest")
-    songs = V.getSongs(path)
-    return render_template('valley.html', songs=songs)
+    groupedSongs = V.getSongs(path)
+    return render_template('valley.html', groups=groupedSongs)
 
 
 @app.route('/valley/<song>')
