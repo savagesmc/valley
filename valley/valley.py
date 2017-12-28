@@ -23,6 +23,8 @@ def getGroup(path):
       groupFile = path + '/' + fname[0]
       with open(groupFile, 'r') as myfile:
          group = myfile.read()
+         if 'expired' in group:
+            group="expired"
    return group
 
 def getSongs(root):
@@ -33,7 +35,7 @@ def getSongs(root):
          group_ = getGroup(root+'/'+dir_)
          if group_ in result.keys():
             result[group_].append(dir_)
-         else:
+         elif group_ != 'expired':
             result[group_] = [dir_]
    return result
 
