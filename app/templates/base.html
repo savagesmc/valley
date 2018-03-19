@@ -1,0 +1,22 @@
+{% extends "bootstrap/base.html" %}
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+{% block title %}Song Practice{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+   <img src="{{ url_for('static', filename='images/logo.png') }}" style="margin 0px auto">
+</div>
+
+<div class="container">
+    {% block page_content %}{% endblock %}
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+{% endblock %}
