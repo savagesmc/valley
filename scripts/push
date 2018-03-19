@@ -1,6 +1,6 @@
 #!/bin/bash
 
-src=~/home/repos/valley/
+src=~/home/repos/songPractice/
 dst=smclark@clarkhome.org:~/clarkhome.org/
 SSHPASS=`cat ~/.cred/.rsync.clarkhome.org.cred`
 
